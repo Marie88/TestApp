@@ -20,7 +20,11 @@ namespace TestApp.Module.Rfc.Infrastructure.Module
                             var connectionFactory = context.Resolve<ISqlConnectionFactory>();
                             var dbContextOptionsBuilder = new DbContextOptionsBuilder<RequestForChangeContext>();
                             
-                            dbContextOptionsBuilder.UseSqlServer(connectionFactory.GetConnectionString());
+                            dbContextOptionsBuilder.UseSqlServer(connectionFactory.GetConnectionString(), b=>
+                            {
+                                b.MigrationsAssembly(@"TestApp.Module.Rfc");
+                                b.MigrationsHistoryTable("__EFMigrationsHistroy", "rfc");
+                            });
                             
                             return dbContextOptionsBuilder.Options;
                         }))

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TestApp.Api.Business.Product;
 using TestApp.Module.Rfc.Application.GetRfcOverview;
 using TestApp.Module.Rfc.Application.NewRfc;
 using TestApp.Module.Rfc.Application.WithdrawRfc;

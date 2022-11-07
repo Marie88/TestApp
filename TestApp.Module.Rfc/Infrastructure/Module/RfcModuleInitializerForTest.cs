@@ -1,6 +1,8 @@
 ﻿using System.Threading.Tasks;
+using System.Transactions;
+using Microsoft.EntityFrameworkCore;
 using TestApp.BuildingBlocks.Module;
-using TestApp.Module.Rfc.Domain.RequestForChange;
+using TestApp.Module.Rfc.Domain;
 using TestApp.Module.Rfc.Infrastructure.EntityFramework;
 
 namespace TestApp.Module.Rfc.Infrastructure.Module
@@ -16,8 +18,7 @@ namespace TestApp.Module.Rfc.Infrastructure.Module
 
         public async Task Run()
         {
-            await _context.Database.EnsureDeletedAsync();
-            await _context.Database.EnsureCreatedAsync();
+            await _context.Database.MigrateAsync();
 
             var first = RequestForChange.Create("RFC-1", "first RFC");
             var second = RequestForChange.Create("RFC-2", "second RFC");
@@ -29,8 +30,9 @@ namespace TestApp.Module.Rfc.Infrastructure.Module
             second.WithDraw();
             third.Start();
 
-            await _context.RequestsForChange.AddRangeAsync(first,second,third,fourth);
+            await _context.RequestsForChange.AddRangeAsync(first, second, third, fourth);
             await _context.SaveChangesAsync();
+
         }
     }
 }

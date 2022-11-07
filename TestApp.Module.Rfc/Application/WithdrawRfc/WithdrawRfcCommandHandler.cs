@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using MediatR;
 using TestApp.BuildingBlocks.Application;
 using TestApp.BuildingBlocks.Application.Commands;
-using TestApp.Module.Rfc.Domain.RequestForChange;
+using TestApp.Module.Rfc.Domain;
 
 namespace TestApp.Module.Rfc.Application.WithdrawRfc
 {

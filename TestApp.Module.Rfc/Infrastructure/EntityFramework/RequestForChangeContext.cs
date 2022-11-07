@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TestApp.Module.Rfc.Domain.RequestForChange;
+using TestApp.Module.Rfc.Domain;
 
 namespace TestApp.Module.Rfc.Infrastructure.EntityFramework
 {
@@ -9,7 +9,7 @@ namespace TestApp.Module.Rfc.Infrastructure.EntityFramework
 
         public RequestForChangeContext(DbContextOptions<RequestForChangeContext> options) : base(options)
         {
-        
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

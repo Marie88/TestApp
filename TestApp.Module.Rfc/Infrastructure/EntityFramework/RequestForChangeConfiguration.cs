@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TestApp.BuildingBlocks.Infrastructure.Domain.EntityFramework;
-using TestApp.Module.Rfc.Domain.RequestForChange;
+using TestApp.Module.Rfc.Domain;
 
 namespace TestApp.Module.Rfc.Infrastructure.EntityFramework
 {

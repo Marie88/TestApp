@@ -8,6 +8,7 @@ using Autofac.Features.Variance;
 using FluentValidation;
 using MediatR;
 using MediatR.Pipeline;
+using Microsoft.EntityFrameworkCore.Design;
 using TestApp.BuildingBlocks.Application.Commands;
 using TestApp.BuildingBlocks.Application.Queries;
 using TestApp.BuildingBlocks.Domain;
@@ -41,7 +42,7 @@ namespace TestApp.ModuleIntegration.EntryPoint
 
             RegisterModules(builder, _moduleAssemblies);
 
-            RegisterModuleDataAccess(builder);
+            RegisterModuleDataAccess(builder);         
         }
 
         private void RegisterModuleDataAccess(ContainerBuilder builder)

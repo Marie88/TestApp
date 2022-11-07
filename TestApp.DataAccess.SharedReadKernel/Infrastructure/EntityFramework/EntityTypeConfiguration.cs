@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using TestApp.BuildingBlocks.Domain;
 
 namespace IoCore.SharedReadKernel.Infrastructure.EntityFramework
 {

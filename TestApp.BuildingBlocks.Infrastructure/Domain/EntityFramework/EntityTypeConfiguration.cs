@@ -10,7 +10,7 @@ namespace TestApp.BuildingBlocks.Infrastructure.Domain.EntityFramework
         {
             builder.HasKey("Id");
             builder.Ignore(requestForChange => requestForChange.DomainEvents);
-
+            builder.Ignore(products => products.DomainEvents);
             ConfigureCore(builder);
         }
 

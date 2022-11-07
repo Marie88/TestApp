@@ -1,6 +1,6 @@
 using FluentAssertions;
 using TestApp.BuildingBlocks.Domain;
-using TestApp.Module.Rfc.Domain.RequestForChange;
+using TestApp.Module.Rfc.Domain;
 
 namespace TestApp.Module.Rfc.UnitTests
 {

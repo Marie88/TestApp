@@ -6,6 +6,7 @@ namespace IoCore.SharedReadKernel.Infrastructure.EntityFramework
     internal class ReadContext : DbContext, IReadModelAccess
     {
         public DbSet<RequestForChange.RequestForChange> RequestsForChange { get; set; }
+        public DbSet<Product.Product> Products { get; set; }
 
         public ReadContext(DbContextOptions<ReadContext> options) : base(options)
         {

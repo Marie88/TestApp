@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using TestApp.Module.Rfc.Domain.RequestForChange;
+using TestApp.Module.Rfc.Domain;
 
 namespace TestApp.Module.Rfc.Infrastructure.EntityFramework
 {
