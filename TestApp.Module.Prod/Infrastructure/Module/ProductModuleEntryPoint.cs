@@ -4,7 +4,6 @@ using TestApp.BuildingBlocks.Module;
 using TestApp.Module.Prod.Infrastructure.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using TestApp.BuildingBlocks.Infrastructure.Database;
-using Microsoft.EntityFrameworkCore.Design;
 
 namespace TestApp.Module.Prod.Infrastructure.Module
 {

@@ -16,5 +16,5 @@ internal class ProductCanOnlyBeDraftedWhenInApprovedForUseRule: IBusinessRule
         return _currentStatus != "APPROVEDFORUSE";
     }
 
-    public string Message => "Product can only be deprecated when it is in approved for use status";
+    public string Message => "Product can only be drafted when it is in approved for use status";
 }

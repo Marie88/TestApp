@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TestApp.Api.Business.Product;
+using TestApp.Module.Rfc.Application.CompleteRfc;
 using TestApp.Module.Rfc.Application.GetRfcOverview;
 using TestApp.Module.Rfc.Application.NewRfc;
 using TestApp.Module.Rfc.Application.WithdrawRfc;
@@ -27,6 +28,12 @@ namespace TestApp.Api.Business.RequestForChange
     
         [HttpPost("/requests-for-change/withdraw")]
         public async Task WithdrawRequestForChange(WithdrawRfcCommand command, [FromServices] IModuleDispatcher moduleDispatcher)
+        {
+            await moduleDispatcher.Execute(command);
+        }
+        
+        [HttpPost("/requests-for-change/complete")]
+        public async Task CompleteRequestForChange(CompleteRfcCommand command, [FromServices] IModuleDispatcher moduleDispatcher)
         {
             await moduleDispatcher.Execute(command);
         }
