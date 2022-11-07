@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
 namespace IoCore.SharedReadKernel.Infrastructure.EntityFramework

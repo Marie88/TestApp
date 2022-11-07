@@ -1,10 +1,11 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using IoCore.SharedReadKernel;
 using IoCore.SharedReadKernel.Product;
 using Microsoft.EntityFrameworkCore;
+using TestApp.BuildingBlocks.Application;
 using TestApp.BuildingBlocks.Application.Queries;
 using TestApp.Module.Prod.Application.GetProductOverview;
 
@@ -36,12 +37,20 @@ internal class GetProductByIdQueryHandler : IQueryHandler<GetProductByIdQuery, P
     
     public async Task<ProductOverviewDto> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
     {
-        /*var productSummaryDto =
-             _readModelAccess
+        var product =
+            await _readModelAccess
                 .Get<Product>()
-                .ProjectTo<ProductOverviewDto>(Mapper.ConfigurationProvider);
+                .Where(product => product.Id == request.Id)
+                .SingleOrDefaultAsync();
 
-        return productSummaryDto;*/
-        return new ProductOverviewDto();
+        var productDto = Mapper.Map<Product, ProductOverviewDto>(product);
+
+        
+        if (productDto == null)
+        {
+            throw new NotFoundException($"Product with id {request.Id} could not be found");
+        }
+        
+        return productDto;
     }
 }
