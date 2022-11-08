@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Microsoft.Extensions.Configuration;
 
 namespace TestApp.Module.Rfc.Infrastructure.EntityFramework
 {
@@ -10,7 +8,9 @@ namespace TestApp.Module.Rfc.Infrastructure.EntityFramework
     {
         public RequestForChangeContext CreateDbContext(string[] args)
         {
-            var connectionString = "Server=(local);Database=TestApp;Integrated Security=True;MultipleActiveResultSets=true;";
+            var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+            var configuration = builder.Build();
+            var connectionString = builder.Build().GetConnectionString("local");
 
             var dbContextOptionsBuilder = new DbContextOptionsBuilder<RequestForChangeContext>();
             dbContextOptionsBuilder.UseSqlServer(connectionString);

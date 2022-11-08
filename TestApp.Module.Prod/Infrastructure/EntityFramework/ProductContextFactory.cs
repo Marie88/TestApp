@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 
 namespace TestApp.Module.Prod.Infrastructure.EntityFramework
 {
@@ -7,7 +8,9 @@ namespace TestApp.Module.Prod.Infrastructure.EntityFramework
     {
         ProductContext IDesignTimeDbContextFactory<ProductContext>.CreateDbContext(string[] args)
         {
-            var connectionString = "Server=(local);Database=TestApp;Integrated Security=True;MultipleActiveResultSets=true;";
+            var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+            var configuration = builder.Build();
+            var connectionString = builder.Build().GetConnectionString("local");
 
             var dbContextOptionsBuilder = new DbContextOptionsBuilder<ProductContext>();
             dbContextOptionsBuilder.UseSqlServer(connectionString);
